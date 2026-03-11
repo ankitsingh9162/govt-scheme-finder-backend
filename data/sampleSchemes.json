@@ -1,0 +1,393 @@
+[
+  {
+    "name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "description": "Income support scheme for farmers providing ₹6000 per year in three installments directly to bank accounts.",
+    "benefits": "₹6000 per year (₹2000 every 4 months)",
+    "category": "Farmers",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "occupations": ["Farmer"]
+    },
+    "documents": ["Aadhaar Card", "Bank Account Details", "Land Ownership Documents"],
+    "applicationLink": "https://pmkisan.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Ayushman Bharat - PM-JAY",
+    "description": "Health insurance scheme providing coverage of ₹5 lakh per family per year for hospitalization.",
+    "benefits": "Health coverage up to ₹5 lakh per family per year",
+    "category": "Health",
+    "schemeType": "Central",
+    "eligibility": {
+      "maxIncome": 500000,
+      "categories": ["General", "OBC", "SC", "ST", "EWS"]
+    },
+    "documents": ["Aadhaar Card", "Income Certificate", "Ration Card"],
+    "applicationLink": "https://pmjay.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Awas Yojana (PMAY)",
+    "description": "Housing scheme for urban poor providing financial assistance for construction or purchase of houses.",
+    "benefits": "Subsidy on home loans and credit-linked subsidies",
+    "category": "Housing",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 21,
+      "maxAge": 70,
+      "maxIncome": 1800000
+    },
+    "documents": ["Aadhaar Card", "Income Certificate", "Property Documents", "Bank Statement"],
+    "applicationLink": "https://pmaymis.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Beti Bachao Beti Padhao",
+    "description": "Scheme to address declining Child Sex Ratio and promote education of girl child.",
+    "benefits": "Financial assistance for education and awareness campaigns",
+    "category": "Women",
+    "schemeType": "Central",
+    "eligibility": {
+      "maxAge": 10,
+      "gender": "Female"
+    },
+    "documents": ["Birth Certificate", "Aadhaar Card", "Bank Account Details"],
+    "applicationLink": "https://wcd.nic.in/bbbp-schemes",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Mudra Yojana",
+    "description": "Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises.",
+    "benefits": "Collateral-free loans up to ₹10 lakh",
+    "category": "Startup/MSME",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "occupations": ["Self-Employed", "Entrepreneur", "Small Business Owner"]
+    },
+    "documents": ["Aadhaar Card", "PAN Card", "Business Plan", "Bank Statement"],
+    "applicationLink": "https://www.mudra.org.in/",
+    "isActive": true
+  },
+  {
+    "name": "National Pension Scheme (NPS)",
+    "description": "Voluntary retirement savings scheme designed to enable systematic savings for old age.",
+    "benefits": "Pension benefits after retirement with tax benefits",
+    "category": "Senior Citizens",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70
+    },
+    "documents": ["Aadhaar Card", "PAN Card", "Bank Account Details", "Address Proof"],
+    "applicationLink": "https://www.npscra.nsdl.co.in/",
+    "isActive": true
+  },
+  {
+    "name": "Post Matric Scholarship for SC Students",
+    "description": "Financial assistance to SC students studying at post-matriculation stage.",
+    "benefits": "Maintenance allowance and course fees",
+    "category": "Education",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 16,
+      "maxAge": 35,
+      "maxIncome": 250000,
+      "categories": ["SC"]
+    },
+    "documents": ["Aadhaar Card", "Caste Certificate", "Income Certificate", "Mark Sheets"],
+    "applicationLink": "https://scholarships.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Atal Pension Yojana (APY)",
+    "description": "Pension scheme primarily for workers in unorganized sector.",
+    "benefits": "Guaranteed pension of ₹1000 to ₹5000 per month after 60 years",
+    "category": "Financial Assistance",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40
+    },
+    "documents": ["Aadhaar Card", "Bank Account Details", "Mobile Number"],
+    "applicationLink": "https://www.npscra.nsdl.co.in/",
+    "isActive": true
+  },
+  {
+    "name": "Skill India Mission",
+    "description": "Training program for youth to enhance employability through skill development.",
+    "benefits": "Free skill training, certification, and placement assistance",
+    "category": "Employment",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 35
+    },
+    "documents": ["Aadhaar Card", "Educational Certificates"],
+    "applicationLink": "https://www.skillindia.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "PM Awas Yojana - Gramin",
+    "description": "Rural housing scheme providing financial assistance to poor families for house construction.",
+    "benefits": "₹1.2 lakh financial assistance for house construction in plains, ₹1.3 lakh in hilly areas",
+    "category": "Housing",
+    "schemeType": "Central",
+    "eligibility": {
+      "maxIncome": 300000
+    },
+    "documents": ["Aadhaar Card", "Income Certificate", "BPL Card", "Land Documents"],
+    "applicationLink": "https://pmayg.nic.in/",
+    "isActive": true
+  },
+  {
+    "name": "Kanya Sumangala Yojana",
+    "description": "UP government scheme for girl child welfare from birth to graduation.",
+    "benefits": "₹15,000 in installments from birth to graduation",
+    "category": "Women",
+    "schemeType": "State",
+    "eligibility": {
+      "gender": "Female",
+      "maxAge": 25,
+      "maxIncome": 300000,
+      "states": ["Uttar Pradesh"]
+    },
+    "documents": ["Birth Certificate", "Aadhaar Card", "Bank Account", "Income Certificate"],
+    "applicationLink": "https://mksy.up.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "description": "Crop insurance scheme protecting farmers against crop loss due to natural calamities.",
+    "benefits": "Insurance coverage for crop loss, low premium rates",
+    "category": "Agriculture",
+    "schemeType": "Central",
+    "eligibility": {
+      "occupations": ["Farmer"]
+    },
+    "documents": ["Aadhaar Card", "Land Records", "Bank Account Details", "Sowing Certificate"],
+    "applicationLink": "https://pmfby.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "National Rural Livelihood Mission (NRLM)",
+    "description": "Poverty alleviation scheme promoting self-employment in rural areas.",
+    "benefits": "Skill training, financial assistance, and market linkage",
+    "category": "Employment",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxIncome": 200000
+    },
+    "documents": ["Aadhaar Card", "BPL Card", "Bank Account Details"],
+    "applicationLink": "https://nrlm.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "PM Scholarship Scheme for Ex-Servicemen",
+    "description": "Scholarship for children and widows of ex-servicemen and ex-coast guard personnel.",
+    "benefits": "₹2,500 per month for boys, ₹3,000 per month for girls",
+    "category": "Education",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 25
+    },
+    "documents": ["Aadhaar Card", "Ex-Servicemen Certificate", "Educational Certificates"],
+    "applicationLink": "https://ksb.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Stand Up India Scheme",
+    "description": "Facilitating bank loans for SC/ST and women entrepreneurs.",
+    "benefits": "Loans between ₹10 lakh to ₹1 crore for greenfield enterprises",
+    "category": "Startup/MSME",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "categories": ["SC", "ST"],
+      "gender": "Female"
+    },
+    "documents": ["Aadhaar Card", "PAN Card", "Caste Certificate", "Business Plan"],
+    "applicationLink": "https://www.standupmitra.in/",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Jan Dhan Yojana",
+    "description": "Financial inclusion scheme providing bank accounts with benefits.",
+    "benefits": "Zero balance account, RuPay debit card, accident insurance of ₹2 lakh",
+    "category": "Financial Assistance",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 10
+    },
+    "documents": ["Aadhaar Card", "Address Proof"],
+    "applicationLink": "https://pmjdy.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Rashtriya Vayoshri Yojana",
+    "description": "Scheme providing assisted-living devices to senior citizens from BPL category.",
+    "benefits": "Free wheelchairs, walking sticks, hearing aids, and other devices",
+    "category": "Senior Citizens",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 60,
+      "maxIncome": 150000
+    },
+    "documents": ["Aadhaar Card", "BPL Card", "Age Proof", "Medical Certificate"],
+    "applicationLink": "https://socialwelfare.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Indira Gandhi Matritva Sahyog Yojana",
+    "description": "Maternity benefit scheme for pregnant and lactating women.",
+    "benefits": "₹6,000 in three installments for first live birth",
+    "category": "Women",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 19,
+      "gender": "Female"
+    },
+    "documents": ["Aadhaar Card", "Bank Account", "Pregnancy Certificate"],
+    "applicationLink": "https://wcd.nic.in/",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+    "description": "Life insurance scheme offering life cover.",
+    "benefits": "₹2 lakh life insurance at ₹436 per year premium",
+    "category": "Financial Assistance",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 50
+    },
+    "documents": ["Aadhaar Card", "Bank Account Details"],
+    "applicationLink": "https://www.jansuraksha.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "PM Kaushal Vikas Yojana",
+    "description": "Skill development scheme providing training to youth.",
+    "benefits": "Free training in various skills with certification and monetary rewards",
+    "category": "Employment",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 35
+    },
+    "documents": ["Aadhaar Card", "Educational Certificates"],
+    "applicationLink": "https://www.pmkvyofficial.org/",
+    "isActive": true
+  },
+  {
+    "name": "Digital India Land Records Modernization",
+    "description": "Digitization of land records for easy access and reduced disputes.",
+    "benefits": "Online access to land records, reduced corruption",
+    "category": "Agriculture",
+    "schemeType": "Central",
+    "eligibility": {},
+    "documents": ["Aadhaar Card", "Land Documents"],
+    "applicationLink": "https://dilrmp.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Gramin Digital Saksharta Abhiyan",
+    "description": "Digital literacy mission for rural India.",
+    "benefits": "Free digital literacy training for rural citizens",
+    "category": "Education",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 14,
+      "maxAge": 60
+    },
+    "documents": ["Aadhaar Card"],
+    "applicationLink": "https://www.pmgdisha.in/",
+    "isActive": true
+  },
+  {
+    "name": "Swachh Bharat Mission - Gramin",
+    "description": "Sanitation program providing toilets in rural areas.",
+    "benefits": "₹12,000 incentive for toilet construction",
+    "category": "Housing",
+    "schemeType": "Central",
+    "eligibility": {
+      "maxIncome": 300000
+    },
+    "documents": ["Aadhaar Card", "BPL Card", "Property Documents"],
+    "applicationLink": "https://swachhbharatmission.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "Deendayal Upadhyaya Grameen Kaushalya Yojana",
+    "description": "Skill training and placement program for rural youth.",
+    "benefits": "Free training, placement assistance, and post-placement support",
+    "category": "Employment",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 15,
+      "maxAge": 35,
+      "maxIncome": 200000
+    },
+    "documents": ["Aadhaar Card", "Educational Certificates"],
+    "applicationLink": "https://ddugky.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "National Safai Karamcharis Finance Corporation",
+    "description": "Financial assistance for safai karamcharis and manual scavengers.",
+    "benefits": "Low-interest loans for self-employment ventures",
+    "category": "Financial Assistance",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "occupations": ["Safai Karamchari", "Manual Scavenger"]
+    },
+    "documents": ["Aadhaar Card", "Caste Certificate", "Occupation Certificate"],
+    "applicationLink": "https://nskfdc.nic.in/",
+    "isActive": true
+  },
+  {
+    "name": "Pradhan Mantri Suraksha Bima Yojana",
+    "description": "Accidental insurance scheme.",
+    "benefits": "₹2 lakh accidental death/disability cover at ₹20 per year",
+    "category": "Financial Assistance",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70
+    },
+    "documents": ["Aadhaar Card", "Bank Account Details"],
+    "applicationLink": "https://www.jansuraksha.gov.in/",
+    "isActive": true
+  },
+  {
+    "name": "National Rural Employment Guarantee Act (NREGA)",
+    "description": "Guaranteed 100 days of wage employment in rural areas.",
+    "benefits": "100 days guaranteed employment per year",
+    "category": "Employment",
+    "schemeType": "Central",
+    "eligibility": {
+      "minAge": 18
+    },
+    "documents": ["Aadhaar Card", "Job Card", "Bank Account"],
+    "applicationLink": "https://nrega.nic.in/",
+    "isActive": true
+  },
+  {
+    "name": "PM Ujjwala Yojana",
+    "description": "Free LPG connections to BPL households.",
+    "benefits": "Free LPG connection and first refill support",
+    "category": "Women",
+    "schemeType": "Central",
+    "eligibility": {
+      "gender": "Female",
+      "maxIncome": 200000
+    },
+    "documents": ["Aadhaar Card", "BPL Card", "Bank Account"],
+    "applicationLink": "https://www.pmujjwalayojana.com/",
+    "isActive": true
+  }
+]

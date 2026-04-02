@@ -1,75 +1,20 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: [true, 'Name is required'],
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: [true, 'Email is required'],
-      unique: true,
-      lowercase: true,
-      trim: true,
-    },
-    password: {
-      type: String,
-      required: [true, 'Password is required'],
-      minlength: 6,
-    },
-    googleId: {
-      type: String,
-      unique: true,
-      sparse: true,
-    },
-    age: {
-      type: Number,
-      min: 0,
-      max: 150,
-    },
-    income: {
-      type: Number,
-      min: 0,
-    },
-    state: {
-      type: String,
-    },
-    district: {
-      type: String,
-    },
-    category: {
-      type: String,
-      enum: ['General', 'OBC', 'SC', 'ST', 'EWS'],
-    },
-    occupation: {
-      type: String,
-    },
-    disability: {
-      type: Boolean,
-      default: false,
-    },
-    minority: {
-      type: Boolean,
-      default: false,
-    },
-    gender: {
-      type: String,
-      enum: ['Male', 'Female', 'Other'],
-    },
-    savedSchemes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Scheme',
-      },
-    ],
-  },
-  {
-    timestamps: true,
-  }
-);
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String },
+  googleId: { type: String },
+  age: { type: Number },
+  income: { type: Number },
+  state: { type: String },
+  category: { type: String },
+  gender: { type: String },
+  occupation: { type: String },
+  savedSchemes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Scheme' }],
+  createdAt: { type: Date, default: Date.now }
+});
 
 // Hash password before saving
 userSchema.pre('save', async function (next) {

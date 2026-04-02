@@ -1,31 +1,26 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
         // Check if user exists
-        let user = await User.findOne({ googleId: profile.id });
+        let user = await User.findOne({ email: profile.emails[0].value });
 
         if (user) {
-          // User exists, return user
-          return done(null, user);
-        }
-
-        // Check if user with same email exists
-        user = await User.findOne({ email: profile.emails[0].value });
-
-        if (user) {
-          // Link Google account to existing user
-          user.googleId = profile.id;
-          await user.save();
+          // User exists
+          const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: '30d'
+          });
+          user.token = token;
           return done(null, user);
         }
 
@@ -34,8 +29,16 @@ passport.use(
           name: profile.displayName,
           email: profile.emails[0].value,
           googleId: profile.id,
-          password: Math.random().toString(36).slice(-8), // Random password
+          age: 25, // Default
+          income: 0,
+          state: 'Delhi',
+          category: 'General'
         });
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+          expiresIn: '30d'
+        });
+        user.token = token;
 
         done(null, user);
       } catch (error) {
@@ -44,18 +47,5 @@ passport.use(
     }
   )
 );
-
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (error) {
-    done(error, null);
-  }
-});
 
 module.exports = passport;

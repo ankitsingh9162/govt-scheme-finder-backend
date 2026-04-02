@@ -1,20 +1,22 @@
 const express = require('express');
-const {
-  getUserProfile,
-  updateUserProfile,
-  saveScheme,
-  unsaveScheme,
-  getSavedSchemes,
-} = require('../controllers/userController');
-const { protect } = require('../middleware/authMiddleware');
-
 const router = express.Router();
+const { protect } = require('../middleware/authMiddleware');
+const {
+  getProfile,
+  updateProfile,
+  saveScheme,
+  unsaveScheme
+} = require('../controllers/userController');
 
-// All routes are protected (require login)
-router.get('/profile', protect, getUserProfile);
-router.put('/profile', protect, updateUserProfile);
-router.post('/save-scheme/:schemeId', protect, saveScheme);
-router.delete('/save-scheme/:schemeId', protect, unsaveScheme);
-router.get('/saved-schemes', protect, getSavedSchemes);
+// All routes require authentication
+router.use(protect);
+
+// Profile routes
+router.get('/profile', getProfile);
+router.put('/profile', updateProfile);
+
+// Saved schemes routes
+router.post('/save-scheme/:schemeId', saveScheme);
+router.delete('/save-scheme/:schemeId', unsaveScheme);
 
 module.exports = router;

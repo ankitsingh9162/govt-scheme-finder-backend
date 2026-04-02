@@ -1,149 +1,129 @@
 const User = require('../models/User');
 
-// @desc    Get user profile
-// @route   GET /api/user/profile
-// @access  Private
-const getUserProfile = async (req, res) => {
+// Get user profile
+const getProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select('-password');
-
-    if (user) {
-      res.json({
-        success: true,
-        data: user,
-      });
-    } else {
-      res.status(404).json({ message: 'User not found' });
+    const user = await User.findById(req.user.id).select('-password');
+    
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
+    
+    res.json({
+      success: true,
+      data: user
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Get profile error:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 };
 
-// @desc    Update user profile
-// @route   PUT /api/user/profile
-// @access  Private
-const updateUserProfile = async (req, res) => {
+// Update user profile
+const updateProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-
-    if (user) {
-      user.name = req.body.name || user.name;
-      user.age = req.body.age || user.age;
-      user.income = req.body.income || user.income;
-      user.state = req.body.state || user.state;
-      user.district = req.body.district || user.district;
-      user.category = req.body.category || user.category;
-      user.occupation = req.body.occupation || user.occupation;
-      user.gender = req.body.gender || user.gender;
-      user.disability = req.body.disability !== undefined ? req.body.disability : user.disability;
-      user.minority = req.body.minority !== undefined ? req.body.minority : user.minority;
-
-      const updatedUser = await user.save();
-
-      res.json({
-        success: true,
-        data: {
-          _id: updatedUser._id,
-          name: updatedUser.name,
-          email: updatedUser.email,
-          age: updatedUser.age,
-          income: updatedUser.income,
-          state: updatedUser.state,
-          district: updatedUser.district,
-          category: updatedUser.category,
-          occupation: updatedUser.occupation,
-          gender: updatedUser.gender,
-          disability: updatedUser.disability,
-          minority: updatedUser.minority,
-        },
-      });
-    } else {
-      res.status(404).json({ message: 'User not found' });
+    const { name, age, income, state, category, gender, occupation } = req.body;
+    
+    const user = await User.findById(req.user.id);
+    
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
+    
+    // Update fields
+    if (name) user.name = name;
+    if (age) user.age = age;
+    if (income !== undefined) user.income = income;
+    if (state) user.state = state;
+    if (category) user.category = category;
+    if (gender) user.gender = gender;
+    if (occupation !== undefined) user.occupation = occupation;
+    
+    await user.save();
+    
+    res.json({
+      success: true,
+      message: 'Profile updated successfully',
+      data: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        age: user.age,
+        income: user.income,
+        state: user.state,
+        category: user.category,
+        gender: user.gender,
+        occupation: user.occupation,
+        savedSchemes: user.savedSchemes
+      }
+    });
+    
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Update profile error:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 };
 
-// @desc    Save a scheme to user's saved list
-// @route   POST /api/user/save-scheme/:schemeId
-// @access  Private
+// Save scheme
 const saveScheme = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-
-    if (user) {
-      // Check if scheme is already saved
-      if (user.savedSchemes.includes(req.params.schemeId)) {
-        return res.status(400).json({ message: 'Scheme already saved' });
-      }
-
-      user.savedSchemes.push(req.params.schemeId);
-      await user.save();
-
-      res.json({
-        success: true,
-        message: 'Scheme saved successfully',
-      });
-    } else {
-      res.status(404).json({ message: 'User not found' });
+    const user = await User.findById(req.user.id);
+    const schemeId = req.params.schemeId;
+    
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
+    
+    if (user.savedSchemes.includes(schemeId)) {
+      return res.status(400).json({ success: false, message: 'Scheme already saved' });
+    }
+    
+    user.savedSchemes.push(schemeId);
+    await user.save();
+    
+    res.json({
+      success: true,
+      message: 'Scheme saved successfully',
+      data: user.savedSchemes
+    });
+    
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Save scheme error:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 };
 
-// @desc    Remove a scheme from user's saved list
-// @route   DELETE /api/user/save-scheme/:schemeId
-// @access  Private
+// Unsave scheme
 const unsaveScheme = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-
-    if (user) {
-      user.savedSchemes = user.savedSchemes.filter(
-        (id) => id.toString() !== req.params.schemeId
-      );
-      await user.save();
-
-      res.json({
-        success: true,
-        message: 'Scheme removed from saved list',
-      });
-    } else {
-      res.status(404).json({ message: 'User not found' });
+    const user = await User.findById(req.user.id);
+    const schemeId = req.params.schemeId;
+    
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
+    
+    user.savedSchemes = user.savedSchemes.filter(
+      id => id.toString() !== schemeId
+    );
+    await user.save();
+    
+    res.json({
+      success: true,
+      message: 'Scheme removed successfully',
+      data: user.savedSchemes
+    });
+    
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Unsave scheme error:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 };
 
-// @desc    Get user's saved schemes
-// @route   GET /api/user/saved-schemes
-// @access  Private
-const getSavedSchemes = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).populate('savedSchemes');
-
-    if (user) {
-      res.json({
-        success: true,
-        count: user.savedSchemes.length,
-        data: user.savedSchemes,
-      });
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
+// CRITICAL: Export all functions
 module.exports = {
-  getUserProfile,
-  updateUserProfile,
+  getProfile,
+  updateProfile,
   saveScheme,
-  unsaveScheme,
-  getSavedSchemes,
+  unsaveScheme
 };
